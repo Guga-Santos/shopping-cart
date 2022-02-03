@@ -80,6 +80,7 @@ const getFetchItem = async (e) => {
     salePrice: item.price,
   };
   cart.appendChild(createCartItemElement(obj));
+  saveCartItems(cart.innerHTML);
   sum();
 };
 
