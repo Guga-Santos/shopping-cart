@@ -32,7 +32,7 @@ function getSkuFromProductItem(item) {
 
 function cartItemClickListener(e) {
   e.target.remove();
-  saveCartItems(cart.innerHTML)
+  saveCartItems(cart.innerHTML);
   
 }
 
