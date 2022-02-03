@@ -58,7 +58,6 @@ const getFetchProducts = async () => {
  };
 
 const getFetchItem = async (e) => {
-  const cartItem = document.querySelector('.cart__items');
   const ids = e.target.parentNode.firstChild.innerText;
   const item = await fetchItem(ids);
 
@@ -67,20 +66,26 @@ const getFetchItem = async (e) => {
     name: item.title,
     salePrice: item.price,
   };
-  cartItem.appendChild(createCartItemElement(obj));
+  cart.appendChild(createCartItemElement(obj));
 };
 
 const addToCart = () => {
   const btnAdd = document.querySelectorAll('.item__add');
   btnAdd.forEach((btn) => {
-    btn.addEventListener('click', getFetchItem);
+    btn.addEventListener('mousedown', getFetchItem);
   }); 
+  saveCartItems(cart.innerHTML);
 };
 
 const boxes = document.querySelector('.items');
-boxes.addEventListener('click', (e) => {
-  e.target.addEventListener('click', saveCartItems(cart.innerHTML));
-});
+boxes.addEventListener('mousedown', () => saveCartItems(cart.innerHTML));
+boxes.addEventListener('mouseup', () => saveCartItems(cart.innerHTML));
+// boxes.addEventListener('mousedown', (e) => {
+//   e.target.addEventListener('click', saveCartItems(cart.innerHTML));
+// });
+// boxes.addEventListener('mouseup', (e) => {
+//   e.target.addEventListener('click', saveCartItems(cart.innerHTML));
+// });
 
 const loadStorage = () => {
   cart.innerHTML = getSavedCartItems();
@@ -88,6 +93,12 @@ const loadStorage = () => {
     li.addEventListener('click', cartItemClickListener);
   });
 };
+
+const eraserCartBtn = document.querySelector('.empty-cart');
+eraserCartBtn.addEventListener('click', () => {
+  cart.innerHTML = '';
+  localStorage.removeItem('cartItems');
+});
 
 window.onload = async () => {
   await getFetchProducts();
