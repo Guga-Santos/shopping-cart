@@ -38,10 +38,6 @@ function sum() {
   total.innerText = sumOf;
 }
 
-function getSkuFromProductItem(item) {
-  return item.querySelector('span.item__sku').innerText;
-}
-
 function cartItemClickListener(e) {
   e.target.remove();
   saveCartItems(cart.innerHTML);
@@ -87,21 +83,11 @@ const getFetchItem = async (e) => {
 const addToCart = () => {
   const btnAdd = document.querySelectorAll('.item__add');
   btnAdd.forEach((btn) => {
-    btn.addEventListener('mousedown', getFetchItem);
+    btn.addEventListener('click', getFetchItem);
   }); 
   saveCartItems(cart.innerHTML);
   sum();
 };
-
-const boxes = document.querySelector('.items');
-boxes.addEventListener('mousedown', () => saveCartItems(cart.innerHTML));
-boxes.addEventListener('mouseup', () => saveCartItems(cart.innerHTML));
-// boxes.addEventListener('mousedown', (e) => {
-//   e.target.addEventListener('click', saveCartItems(cart.innerHTML));
-// });
-// boxes.addEventListener('mouseup', (e) => {
-//   e.target.addEventListener('click', saveCartItems(cart.innerHTML));
-// });
 
 const loadStorage = () => {
   cart.innerHTML = getSavedCartItems();
@@ -118,7 +104,9 @@ eraserCartBtn.addEventListener('click', () => {
 });
 
 window.onload = async () => {
+  const loadPage = document.querySelector('.loading');
   await getFetchProducts();
+  loadPage.remove();
   loadStorage();
   addToCart();
 };
