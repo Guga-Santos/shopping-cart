@@ -15,22 +15,97 @@
     <script src="./helpers/saveCartItems.js" defer></script>
     <script src="./helpers/getSavedCartItems.js" defer></script>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <header class="header">
       <div class="container-title">
         <span class="title"><strong>trybe</strong>shopping</span>
       </div>
-      <i class="material-icons" style="font-size:45px;color:white">shopping_cart</i>
+      <div class="search">
+        <input type="text" name="" placeholder="Search..." class="inputTxt" >
+        <button class="searchBtn" onclick="clearInput()"><i class="fa fa-search"></i></button>
+      </div>
+      <i class="material-icons" style="font-size:5vh;color:white">shopping_cart</i>
       <div class="container-cartTitle">
         <span class="cart__title">Meu carrinho</span>
       </div>
     </header>
     <section class="container">
-      <section class="items"></section>
+      <div class="loader">
+      </div>
+      <p class="loading">carregando...</p>
+      <section class="items">
+        
+         <section class="categories">
+           <div class="categ">
+             <p class="icons-P">Eletrodomésticos</p>
+             <img class="icons" src="./imgs/washing-machine.png" alt="washing Machine Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Informática</p>
+             <img class="icons" src="./imgs/laptop.png" alt="Laptop Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Celulares e Telefones</p>
+             <img class="icons" src="./imgs/smartphone.png" alt="SmartPhone Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Games</p>
+             <img class="icons" src="./imgs/game-controller.png" alt="game controller Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Cameras e acessórios</p>
+             <img class="icons" src="./imgs/photo-camera.png" alt="Camera Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Música</p>
+             <img class="icons" src="./imgs/music.png" alt="Music disc Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Livros e Revistas</p>
+             <img class="icons" src="./imgs/book.png" alt="Book Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Instrumentos musicais</p>
+             <img class="icons" src="./imgs/guitar.png" alt="Guitar Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Brinquedos e Hobbies</p>
+             <img class="icons" src="./imgs/bear.png" alt="bear toy icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Calçados e Roupas</p>
+             <img class="icons" src="./imgs/shirt.png" alt="T-shirt Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Perfumaria</p>
+             <img class="icons" src="./imgs/make-up.png" alt="make-up kit Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Joias e Relógios</p>
+             <img class="icons" src="./imgs/necklace.png" alt="necklace Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Alimentos e Bebidas</p>
+             <img class="icons" src="./imgs/supplies.png" alt="food supplies Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Esportes e Fitness</p>
+             <img class="icons" src="./imgs/gym.png" alt="Weights icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Animais domésticos</p>
+             <img class="icons" src="./imgs/dog-bowl.png" alt="dog bowl Icon">
+           </div>
+           <div class="categ">
+             <p class="icons-P">Serviços</p>
+             <img class="icons" src="./imgs/management.png" alt="work team Icon">
+           </div>
+         </section>
+      </section>
       <section class="cart">
         <ol class="cart__items"></ol>
-        <p class="loading">carregando...</p>
         <p class="total-price"></p>
         <button class="empty-cart">Esvaziar carrinho</button>
       </section>

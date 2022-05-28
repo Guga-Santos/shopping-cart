@@ -6,8 +6,37 @@
 }
 
 body {
-  background-color: rgb(246, 246, 246);
+  background-color: #001320;
+  overflow-y: hidden;
 }
+
+/* ----------------------------------------------------------------------- */
+
+.items::-webkit-scrollbar {
+  width: 15px; /* width of the entire scrollbar */
+}
+
+.items::-webkit-scrollbar-track {
+  background: rgb(10, 118, 79); /* color of the tracking area */
+}
+
+.items::-webkit-scrollbar-thumb {
+  background-color: rgb(3, 52, 45); /* color of the scroll thumb */
+}
+
+.cart__items::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+.cart__items::-webkit-scrollbar-track {
+  background: rgb(10, 118, 79); /* color of the tracking area */
+}
+
+.cart__items::-webkit-scrollbar-thumb {
+  background-color: rgb(3, 52, 45); /* color of the scroll thumb */
+}
+
+/* ---------------------------------------------------------------- */
 
 .header {
   position: relative;
@@ -16,16 +45,39 @@ body {
   align-items: center;
   width: 100%;
   height: 60px;
+  align-items: center;
 }
 
 .container-title {
-  width: 80%;
+  width: 20%;
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  width: 60%;
+  padding: 0px 5%;
+}
+
+.inputTxt {
+  width: 93%;
+  height: 30px;
+  padding: 10px;
+}
+
+.searchBtn {
+  width: 40px;
 }
 
 .title {
+  display: flex;
   color: rgb(221, 221, 221);
-  font-size: 30px;
+  font-size: 5vh;
   padding-left: 30px;
+}
+
+.inputTxt {
+  display: flex;
 }
 
 .container-cartTitle {
@@ -43,7 +95,7 @@ body {
 }
 
 .container-cartTitle:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 15px;
   right: 61.5%;
@@ -55,7 +107,7 @@ body {
 }
 
 .container-cartTitle:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 30px;
   right: 61.5%;
@@ -68,7 +120,7 @@ body {
 
 .container-cartTitle .cart__title {
   color: white;
-  font-size: 20px;
+  font-size: 3.5vh;
   padding-left: 35px;
   font-weight: 700;
 }
@@ -88,7 +140,11 @@ body {
   flex-basis: 70%;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px 0;
+  margin-top: 0.5%;
+  padding-bottom: 100px;
+  border-radius: 20px;
+  height: 92vh;
+  overflow-y: scroll;
 }
 
 .item {
@@ -97,9 +153,20 @@ body {
   height: auto;
   margin: 5px;
   width: 200px;
-  border: 2px solid rgb(234, 234, 233);
-  border-radius: 5px;
+  border: 2px solid #001320;
+  border-radius: 15px;
   box-sizing: border-box;
+  transition: 0.1s;
+  transition-delay: 0.3s;
+}
+
+.item:hover {
+  filter: brightness(85%);
+  transition: 0.2s;
+}
+
+.item:active {
+  filter: brightness(100%);
 }
 
 .item .item__sku {
@@ -109,17 +176,50 @@ body {
 .item .item__title {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   flex-grow: 1;
   padding: 10px;
   text-align: center;
 }
 
+.item__title {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  height: 60px;
+  user-select: none;
+}
+
 .item .item__image {
   width: 100%;
+  height: 200px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.item .item__price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.7);
+  height: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item__price {
+  letter-spacing: 0.12em;
+  user-select: none;
+}
+
+.item__add {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.item__add:hover {
+  font-weight: 800;
 }
 
 .item .item__add {
-  background-color: rgb(5, 52, 219);
+  background-color: rgb(3, 52, 45);
   border: 0;
   cursor: pointer;
   margin: 0;
@@ -128,22 +228,172 @@ body {
 }
 
 .cart {
+  margin-top: 0.5%;
   display: flex;
   flex-basis: 32%;
   flex-flow: column wrap;
-  background-color: rgb(241, 241, 238);
+  background-color: #001320;
   height: 100vh;
 }
 
 .cart .cart__items {
-  height: 500px;
+  width: 100%;
+  height: 70vh;
   overflow-y: scroll;
+  padding: 10px 15px;
+  margin: 0px auto;
 }
 
 .empty-cart {
+  color: white;
   width: 170px;
   height: 35px;
   margin: 0 auto;
-  border: 2px solid rgb(5, 52, 219);
-  background-color: rgb(249, 249, 246);
+  border: 2px solid white;
+  background-color: orangered;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.empty-cart:hover {
+  background-color: #ff703c;
+}
+
+.empty-cart:active {
+  background-color: orangered;
+  font-weight: 900;
+}
+
+.total-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1.4em;
+  letter-spacing: 0.1em;
+  font-weight: 900;
+  color: green;
+}
+
+.cart__item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-align: left;
+  line-height: 1.5em;
+  flex-direction: row-reverse;
+  background-color: white;
+  margin-top: 5px;
+  padding-left: 2%;
+  height: 100px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 2vh;
+}
+
+.cart__item:hover {
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.cart__item:active {
+  width: 20%;
+  transition: 0.5s;
+  font-size: 0px;
+}
+
+.cart__image {
+  margin-right: 3%;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------- */
+.on {
+  position: fixed;
+  left: 30%;
+  top: 44%;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid rgb(3, 52, 45);
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: absolute;
+  left: 31%;
+  top: 49%;
+  color: white;
+}
+/* ----------------------------------------------------------------------------- */
+
+.categories {
+  display: grid;
+  width: 92%;
+  height: 25%;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50% 50%;
+  gap: 5px;
+  margin: 30px 8px 50px 8px;
+}
+
+.categories::-webkit-scrollbar {
+  width: 15px; /* width of the entire scrollbar */
+}
+
+.categories::-webkit-scrollbar-track {
+  background: #0a764f; /* color of the tracking area */
+}
+
+.categories::-webkit-scrollbar-thumb {
+  background-color: rgb(3, 52, 45); /* color of the scroll thumb */
+}
+
+.categ {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a764f;
+  color: white;
+  font-size: 0.8em;
+}
+.icons {
+  filter: invert(100%);
+  width: 2vw;
+  /* height: 50%; */
+  margin: 5%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.categ:hover {
+  opacity: 90%;
+  cursor: pointer;
+}
+
+.categ:active {
+  font-size: .95em;
+  font-weight: 900;
+}
+
+.categ:active .icons {
+  width: 35%;
+  height: 55%;
 }
